@@ -8,54 +8,50 @@
 		<title>Lista de Compras</title>
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
-	<body>
-		<main>
-			<section>
-				<img src="images/shopping.svg" alt="Compras" />
-				<input type="text" placeholder="Digite o item que deseja adicionar" />
-				<button>Salvar item</button>
+	<body class="app">
+		<main class="todo-list">
+			<section class="add-list">
+				<img class="add-list__img" src="images/shopping.svg" alt="Compras" />
+				<input class="add-list__input" type="text" placeholder="Digite o item que deseja adicionar" />
+				<button class="add-list__btn">Salvar item</button>
 			</section>
-			<section>
-				<div>
-					<h1>Lista de Compras</h1>
-					<ul>
-						<li>
-							<div>
-								<input type="checkbox" />
-								<p>Item 1</p>
-								<div>
-									<img src="images/edit-black.svg" alt="Editar" />
-									<img src="images/trash-black.svg" alt="Lixeira" />
+			<section class="main-list">
+				<div class="buy-list">
+					<h1 class="buy-list__title">Lista de Compras</h1>
+					<ul class="buy-list__list">
+						<li class="buy-item">
+							<div class="buy-item__main">
+								<input class="buy-item__box" type="checkbox" />
+								<p class="buy-item__task">Item 1</p>
+								<div class="buy-item__custom">
+									<img class="buy-item__edit" src="images/edit-black.svg" alt="Editar" />
+									<img class="buy-item__cancel" src="images/trash-black.svg" alt="Lixeira" />
 								</div>
 							</div>
-							<div>
-								<p>Segunda-feira (31/10/2022) às 08:30</p>
-							</div>
+							<p class="buy-item__date">Segunda-feira (31/10/2022) às 08:30</p>
 						</li>
 					</ul>
 				</div>
-				<div>
-					<h1>Comprado</h1>
-					<ul>
-						<li>
-							<div>
-								<input type="checkbox" />
-								<p>Item 1</p>
-								<div>
-									<img src="images/edit-black.svg" alt="Editar" />
-									<img src="images/trash-black.svg" alt="Lixeira" />
+				<div class="done-list">
+					<h1 class="done-list__title">Comprado</h1>
+					<ul class="done-list__list">
+						<li class="purchased">
+							<div class="purchased__main">
+								<input class="purchased__box" type="checkbox" />
+								<p class="purchased__task">Item 1</p>
+								<div class="purchased__custom">
+									<img class="purchased__edit" src="images/edit-black.svg" alt="Editar" />
+									<img class="purchased__cancel" src="images/trash-black.svg" alt="Lixeira" />
 								</div>
 							</div>
-							<div>
-								<p>Segunda-feira (31/10/2022) às 08:30</p>
-							</div>
+							<p class="purchased__date">Segunda-feira (31/10/2022) às 08:30</p>
 						</li>
 					</ul>
 				</div>
 			</section>
 		</main>
-		<footer>
-			<p>Desenvolvido por Michael Rocha.</p>
+		<footer class="footer">
+			<p class="footer__text">Desenvolvido por Michael Rocha.</p>
 		</footer>
 		<script src="javascript/app.js"></script>
 	</body>
