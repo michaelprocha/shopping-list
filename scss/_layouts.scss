@@ -10,9 +10,13 @@
 
 .todo-list{
     background-color: var.$main-color;
-    max-width: uti.to-rem(440);
     width: 100%;
-    margin: uti.to-rem(40) uti.to-rem(16) 0 uti.to-rem(16);
-    padding: uti.to-rem(50) uti.to-rem(11);
+    max-width: uti.to-rem(440);
+    padding: uti.to-rem(50) uti.to-rem(20);
     border-radius: uti.to-rem(16);
+}
+
+.main-list{
+    display: flex;
+    flex-direction: column;
 }

@@ -1,19 +1,18 @@
-@use 'utilits' as uti;
-@use 'variables' as var;
+@use "utilits" as uti;
+@use "variables" as var;
 
-.add-list{
+.add-list {
     margin-bottom: uti.to-rem(24);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: uti.to-rem(8);
 
-    &__img{
+    &__img {
         margin-bottom: uti.to-rem(24);
-
     }
 
-    &__input{
+    &__input {
         max-width: uti.to-rem(307);
         max-height: uti.to-rem(43);
         width: 100%;
@@ -22,9 +21,13 @@
         border-radius: uti.to-rem(24);
         padding: uti.to-rem(16) uti.to-rem(12);
         text-align: center;
+
+        &::placeholder {
+            color: #8a8a8a;
+        }
     }
 
-    &__btn{
+    &__btn {
         max-width: uti.to-rem(140);
         max-height: uti.to-rem(48);
         background-color: var.$secundary-color;
@@ -34,6 +37,168 @@
         border-radius: uti.to-rem(24);
         color: var.$main-color;
         font-family: var.$text-font;
-        font-size: var.$text-large-size;
+        font-size: uti.to-rem(var.$text-large-size);
+        margin: 0 0 uti.to-rem(24) 0;
     }
+}
+
+.buy-list {
+    &__title {
+        font-family: var.$title-font;
+        font-size: uti.to-rem(var.$title-size);
+        color: var.$secundary-color;
+        border-bottom: dotted 3px var.$secundary-color;
+        padding: 0 0 uti.to-rem(8) 0;
+        margin: 0 0 uti.to-rem(24) 0;
+    }
+}
+
+.buy-item {
+    display: flex;
+    flex-direction: column;
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__main-data {
+        display: flex;
+        align-items: center;
+    }
+
+    &__main-box {
+        width: uti.to-rem(20);
+        height: uti.to-rem(20);
+        margin-right: uti.to-rem(8);
+    }
+
+    &__box {
+        display: none;
+
+        &:checked + .buy-item__box-label {
+            background-image: url(../images/checkbox-done.svg);
+            background-size: cover;
+            background-color: var.$border-color;
+        }
+    }
+
+    &__box-label {
+        width: uti.to-rem(20);
+        height: uti.to-rem(20);
+        border: solid 2px var.$border-color;
+        display: inline-block;
+        border-radius: 4px;
+        background-color: var.$main-color;
+    }
+
+    &__task {
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-size);
+        color: var.$border-color;
+    }
+
+    &__custom {
+        display: flex;
+        gap: uti.to-rem(8);
+    }
+
+    &__edit {
+        width: 100%;
+    }
+
+    &__cancel {
+        width: 100%;
+    }
+
+    &__date {
+        color: var.$border-color;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$date-size);
+    }
+}
+
+.done-list {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font-family: var.$title-font;
+        font-size: uti.to-rem(var.$title-size);
+        color: var.$secundary-color;
+        border-bottom: dotted 3px var.$secundary-color;
+        padding: 0 0 uti.to-rem(8) 0;
+        margin: uti.to-rem(40) 0 uti.to-rem(24) 0;
+    }
+
+}
+
+.purchased{
+
+     &__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__main-data {
+        display: flex;
+        align-items: center;
+    }
+
+    &__main-box {
+        width: uti.to-rem(20);
+        height: uti.to-rem(20);
+        margin-right: uti.to-rem(8);
+    }
+
+    &__box {
+        display: none;
+
+        &:checked + .purchased__box-label {
+            background-image: url(../images/checkbox-done.svg);
+            background-size: cover;
+            background-color: var.$border-color;
+        }
+    }
+
+    &__box-label {
+        width: uti.to-rem(20);
+        height: uti.to-rem(20);
+        border: solid 2px var.$border-color;
+        display: inline-block;
+        border-radius: 4px;
+        background-color: var.$main-color;
+    }
+
+    &__task {
+        text-decoration: line-through;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-size);
+        color: var.$border-color;
+    }
+
+    &__custom {
+        display: flex;
+        gap: uti.to-rem(8);
+    }
+
+    &__edit {
+        width: 100%;
+    }
+
+    &__cancel {
+        width: 100%;
+    }
+
+    &__date {
+        color: var.$border-color;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$date-size);
+    }
+}
+
+.footer{
+    margin: uti.to-rem(19) 0 uti.to-rem(40) 0;
 }

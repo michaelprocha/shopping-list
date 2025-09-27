@@ -6,7 +6,6 @@
 
 html,
 body {
-  height: 100%;
   font-family: system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -47,10 +46,9 @@ body {
   background: #000;
   background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(38, 50, 127) 100%);
   color: #fff;
-  min-width: 100dvw;
-  min-height: 100dvh;
   width: 100%;
   height: 100%;
+  padding: 0 20px 0 20px;
 }
 
 .app {
@@ -62,11 +60,15 @@ body {
 
 .todo-list {
   background-color: #F9F9F9;
-  max-width: 27.5rem;
   width: 100%;
-  margin: 2.5rem 1rem 0 1rem;
-  padding: 3.125rem 0.6875rem;
+  max-width: 27.5rem;
+  padding: 3.125rem 1.25rem;
   border-radius: 1rem;
+}
+
+.main-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .add-list {
@@ -89,6 +91,9 @@ body {
   padding: 1rem 0.75rem;
   text-align: center;
 }
+.add-list__input::placeholder {
+  color: #8a8a8a;
+}
 .add-list__btn {
   max-width: 8.75rem;
   max-height: 3rem;
@@ -99,7 +104,141 @@ body {
   border-radius: 1.5rem;
   color: #F9F9F9;
   font-family: "Numans", sans-serif;
-  font-size: 18;
+  font-size: 1.125rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.buy-list__title {
+  font-family: "Krona One", sans-serif;
+  font-size: 1.25rem;
+  color: #F55B64;
+  border-bottom: dotted 3px #F55B64;
+  padding: 0 0 0.5rem 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.buy-item {
+  display: flex;
+  flex-direction: column;
+}
+.buy-item__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buy-item__main-data {
+  display: flex;
+  align-items: center;
+}
+.buy-item__main-box {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+.buy-item__box {
+  display: none;
+}
+.buy-item__box:checked + .buy-item__box-label {
+  background-image: url(../images/checkbox-done.svg);
+  background-size: cover;
+  background-color: #131730;
+}
+.buy-item__box-label {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: solid 2px #131730;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #F9F9F9;
+}
+.buy-item__task {
+  font-family: "Numans", sans-serif;
+  font-size: 1rem;
+  color: #131730;
+}
+.buy-item__custom {
+  display: flex;
+  gap: 0.5rem;
+}
+.buy-item__edit {
+  width: 100%;
+}
+.buy-item__cancel {
+  width: 100%;
+}
+.buy-item__date {
+  color: #131730;
+  font-family: "Numans", sans-serif;
+  font-size: 0.75rem;
+}
+
+.done-list {
+  display: flex;
+  flex-direction: column;
+}
+.done-list__title {
+  font-family: "Krona One", sans-serif;
+  font-size: 1.25rem;
+  color: #F55B64;
+  border-bottom: dotted 3px #F55B64;
+  padding: 0 0 0.5rem 0;
+  margin: 2.5rem 0 1.5rem 0;
+}
+
+.purchased__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.purchased__main-data {
+  display: flex;
+  align-items: center;
+}
+.purchased__main-box {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+.purchased__box {
+  display: none;
+}
+.purchased__box:checked + .purchased__box-label {
+  background-image: url(../images/checkbox-done.svg);
+  background-size: cover;
+  background-color: #131730;
+}
+.purchased__box-label {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: solid 2px #131730;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #F9F9F9;
+}
+.purchased__task {
+  text-decoration: line-through;
+  font-family: "Numans", sans-serif;
+  font-size: 1rem;
+  color: #131730;
+}
+.purchased__custom {
+  display: flex;
+  gap: 0.5rem;
+}
+.purchased__edit {
+  width: 100%;
+}
+.purchased__cancel {
+  width: 100%;
+}
+.purchased__date {
+  color: #131730;
+  font-family: "Numans", sans-serif;
+  font-size: 0.75rem;
+}
+
+.footer {
+  margin: 1.1875rem 0 2.5rem 0;
 }
 
 /*# sourceMappingURL=styles.css.map */
