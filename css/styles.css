@@ -47,8 +47,8 @@ body {
   background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(38, 50, 127) 100%);
   color: #fff;
   width: 100%;
-  height: 100%;
-  padding: 0 20px 0 20px;
+  height: 100dvh;
+  padding: 40px 20px 0 20px;
 }
 
 .app {
@@ -106,6 +106,7 @@ body {
   font-family: "Numans", sans-serif;
   font-size: 1.125rem;
   margin: 0 0 1.5rem 0;
+  cursor: pointer;
 }
 
 .buy-list__title {
@@ -116,66 +117,12 @@ body {
   padding: 0 0 0.5rem 0;
   margin: 0 0 1.5rem 0;
 }
-
-.buy-item {
+.buy-list__list {
   display: flex;
   flex-direction: column;
-}
-.buy-item__main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.buy-item__main-data {
-  display: flex;
-  align-items: center;
-}
-.buy-item__main-box {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-right: 0.5rem;
-}
-.buy-item__box {
-  display: none;
-}
-.buy-item__box:checked + .buy-item__box-label {
-  background-image: url(../images/checkbox-done.svg);
-  background-size: cover;
-  background-color: #131730;
-}
-.buy-item__box-label {
-  width: 1.25rem;
-  height: 1.25rem;
-  border: solid 2px #131730;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #F9F9F9;
-}
-.buy-item__task {
-  font-family: "Numans", sans-serif;
-  font-size: 1rem;
-  color: #131730;
-}
-.buy-item__custom {
-  display: flex;
-  gap: 0.5rem;
-}
-.buy-item__edit {
-  width: 100%;
-}
-.buy-item__cancel {
-  width: 100%;
-}
-.buy-item__date {
-  color: #131730;
-  font-family: "Numans", sans-serif;
-  font-size: 0.75rem;
+  gap: 1.125rem;
 }
 
-.done-list {
-  display: flex;
-  flex-direction: column;
-}
 .done-list__title {
   font-family: "Krona One", sans-serif;
   font-size: 1.25rem;
@@ -184,57 +131,55 @@ body {
   padding: 0 0 0.5rem 0;
   margin: 2.5rem 0 1.5rem 0;
 }
+.done-list__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
 
-.purchased__main {
+.item {
   display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.item__main-info {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
 }
-.purchased__main-data {
+.item__data {
   display: flex;
   align-items: center;
+  gap: 0.625rem;
 }
-.purchased__main-box {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-right: 0.5rem;
+.item__checkbox {
+  cursor: pointer;
 }
-.purchased__box {
-  display: none;
-}
-.purchased__box:checked + .purchased__box-label {
-  background-image: url(../images/checkbox-done.svg);
-  background-size: cover;
-  background-color: #131730;
-}
-.purchased__box-label {
-  width: 1.25rem;
-  height: 1.25rem;
-  border: solid 2px #131730;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #F9F9F9;
-}
-.purchased__task {
-  text-decoration: line-through;
+.item__task {
   font-family: "Numans", sans-serif;
   font-size: 1rem;
   color: #131730;
 }
-.purchased__custom {
+.item__task--done {
+  text-decoration: line-through;
+}
+.item__custom {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.625rem;
 }
-.purchased__edit {
+.item__edit {
   width: 100%;
+  cursor: pointer;
 }
-.purchased__cancel {
+.item__cancel {
   width: 100%;
+  cursor: pointer;
 }
-.purchased__date {
-  color: #131730;
+.item__date {
   font-family: "Numans", sans-serif;
   font-size: 0.75rem;
+  color: #131730;
 }
 
 .footer {
