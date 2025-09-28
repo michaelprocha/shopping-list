@@ -3,30 +3,31 @@
 const input = document.querySelector(".add-list__input");
 const btn = document.querySelector(".add-list__btn");
 
-class ObjTaskDone {
-	constructor(setText, setDate) {
-		this.text = setText;
-		this.date = setDate;
-		this.done = true;
-	}
-}
-
 class ObjTask {
-	constructor(setText, setDate) {
+	constructor(setText, setDate, setDone) {
 		this.text = setText;
 		this.date = setDate;
-		this.done = false;
+		this.done = setDone;
 	}
 }
 
-function name(params) {
-	
+function loadBuyTasks() {
+	if (localStorage.getItem("buyData") === null) {
+		console.log("sem dados");
+	} else {
+		const buyItens = JSON.parse(localStorage.getItem("buyData"));
+		buyItens.forEach((item) => {
+			createFullItem(item.text, item.date, item.done);
+		});
+	}
 }
 
-function saveData(fullData) {
-	saveJson = JSON.stringify(save);
-	localStorage.setItem(data, saveJson);
+function saveTask(array) {
+	saveJson = JSON.stringify(array);
+	localStorage.setItem("buyData", saveJson);
 }
+
+function saveTaskDone(array) {}
 
 function createItem() {
 	const newItem = document.createElement("li");
@@ -97,7 +98,7 @@ function createCheckboxEvent(checkbox) {
 	});
 }
 
-function createMainInfo(textItem) {
+function createMainInfo(textItem, done) {
 	const mainInfo = document.createElement("div");
 	mainInfo.classList.add("item__main-info");
 
@@ -106,7 +107,11 @@ function createMainInfo(textItem) {
 
 	const img = document.createElement("img");
 	img.classList.add("item__checkbox");
-	img.setAttribute("src", "images/checkbox.svg");
+	if (done === false) {
+		img.setAttribute("src", "images/checkbox.svg");
+	} else {
+		img.setAttribute("src", "images/checkbox-done.svg");
+	}
 	createCheckboxEvent(img);
 
 	const newText = document.createElement("p");
@@ -136,50 +141,45 @@ function createMainInfo(textItem) {
 	return mainInfo;
 }
 
-function createDate() {
-	const day = new Date().toLocaleString("pt-BR", { weekday: "long" });
-	const date = new Date().toLocaleString("pt-BR", { DateStyle: "short" });
-	const hour = new Date().toLocaleString("pt-BR", { timeStyle: "medium" });
-
+function createDate(date) {
 	const p = document.createElement("p");
 	p.classList.add("item__date");
-	p.textContent = `${day} (${date}) ás ${hour}`;
+	p.textContent = date;
 	return p;
 }
 
-function createFullItem(textItem) {
+function createFullItem(textItem, date, done) {
 	const buyList = document.querySelector(".buy-list__list");
+	const doneList = document.querySelector(".done-list__list");
 	const newItem = createItem();
-	const mainInfo = createMainInfo(textItem);
-	const p = createDate();
+	const mainInfo = createMainInfo(textItem, done);
+	const p = createDate(date);
 	newItem.append(mainInfo);
 	newItem.append(p);
-	buyList.append(newItem);
-	return newItem;
+	if (done === false) {
+		buyList.append(newItem);
+	} else {
+		doneList.append(newItem);
+	}
 }
 
 btn.addEventListener("click", () => {
-	const newItem = createFullItem(input.value);
-	console.log(newItem.firstElementChild.firstElementChild.firstElementChild)
-	console.log(newItem.firstElementChild.firstElementChild.lastElementChild)
-	const doneList = document.querySelector(".done-list__list");
-	const buyList = document.querySelector(".buy-list__list");
+	if (input.value !== "") {
+		const day = new Date().toLocaleString("pt-BR", { weekday: "long" });
+		const date = new Date().toLocaleString("pt-BR", { DateStyle: "short" });
+		const hour = new Date().toLocaleString("pt-BR", { timeStyle: "medium" });
+		const fullDate = `${day} (${date}) ás ${hour}`;
+		createFullItem(input.value, fullDate, false);
+
+		const textTasks = Array.from(document.querySelectorAll(".buy-list__list .item__task"));
+		const dates = Array.from(document.querySelectorAll(".buy-list__list .item__date"));
+		const buyItens = [];
+		dates.forEach((date, iDate) => {
+			buyItens.push(new ObjTask(textTasks[iDate].textContent, date.textContent, false));
+		});
+		saveTask(buyItens);
+		input.value = "";
+	}
 });
 
-{
-	/* <li class="item">
-	<div class="item__main-info">
-		<div class="item__data">
-			<img class="item__checkbox" src="images/checkbox.svg" alt="" />
-			<p class="item__task item__task--done">Item 2</p>
-		</div>
-		<div class="item__custom">
-			<img class="item__edit" src="images/edit-black.svg" alt="Editar" />
-			<img class="item__cancel" src="images/trash-black.svg" alt="Lixeira" />
-		</div>
-	</div>
-	<p class="item__date">
-		
-	</p>
-</li>; */
-}
+loadBuyTasks();
