@@ -21,9 +21,13 @@
         border-radius: uti.to-rem(24);
         padding: uti.to-rem(16) uti.to-rem(12);
         text-align: center;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-size);
 
         &::placeholder {
             color: #8a8a8a;
+            font-family: var.$text-font;
+            font-size: uti.to-rem(14);
         }
     }
 
@@ -53,7 +57,7 @@
         margin: 0 0 uti.to-rem(24) 0;
     }
 
-    &__list{
+    &__list {
         display: flex;
         flex-direction: column;
         gap: uti.to-rem(18);
@@ -70,7 +74,7 @@
         margin: uti.to-rem(40) 0 uti.to-rem(24) 0;
     }
 
-        &__list{
+    &__list {
         display: flex;
         flex-direction: column;
         gap: uti.to-rem(18);
@@ -81,7 +85,7 @@
     display: flex;
     flex-direction: column;
     gap: uti.to-rem(2);
-    
+
     &__main-info {
         display: flex;
         align-items: center;
@@ -94,7 +98,7 @@
         gap: uti.to-rem(10);
     }
 
-    &__checkbox{
+    &__checkbox {
         cursor: pointer;
     }
 
@@ -103,7 +107,7 @@
         font-size: uti.to-rem(var.$text-size);
         color: var.$border-color;
 
-        &--done{
+        &--done {
             text-decoration: line-through;
         }
     }
@@ -114,12 +118,12 @@
         gap: uti.to-rem(10);
     }
 
-    &__edit{
+    &__edit {
         width: 100%;
         cursor: pointer;
     }
 
-    &__cancel{
+    &__trash {
         width: 100%;
         cursor: pointer;
     }

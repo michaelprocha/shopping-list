@@ -1,5 +1,3 @@
-// const buyList = document.querySelector(".buy-list__list");
-// const doneList = document.querySelector(".done-list__list");
 const input = document.querySelector(".add-list__input");
 const btn = document.querySelector(".add-list__btn");
 
@@ -22,12 +20,54 @@ function loadBuyTasks() {
 	}
 }
 
+function loadDoneTasks() {
+	if (localStorage.getItem("doneData") === null) {
+		console.log("sem dados");
+	} else {
+		const doneItens = JSON.parse(localStorage.getItem("doneData"));
+		doneItens.forEach((item) => {
+			createFullItem(item.text, item.date, item.done);
+		});
+	}
+}
+
+function getBuyItens() {
+	const textTasks = Array.from(document.querySelectorAll(".buy-list__list .item__task"));
+	const dates = Array.from(document.querySelectorAll(".buy-list__list .item__date"));
+	const buyItens = [];
+	dates.forEach((date, iDate) => {
+		if (textTasks[iDate].textContent) {
+			buyItens.push(new ObjTask(textTasks[iDate].textContent, date.textContent, false));
+		} else {
+			buyItens.push(new ObjTask(textTasks[iDate].value, date.textContent, false));
+		}
+	});
+	return buyItens;
+}
+
+function getDoneItens() {
+	const textTasks = Array.from(document.querySelectorAll(".done-list__list .item__task"));
+	const dates = Array.from(document.querySelectorAll(".done-list__list .item__date"));
+	const doneItens = [];
+	dates.forEach((date, iDate) => {
+		if (textTasks[iDate].textContent) {
+			doneItens.push(new ObjTask(textTasks[iDate].textContent, date.textContent, true));
+		} else {
+			doneItens.push(new ObjTask(textTasks[iDate].value, date.textContent, true));
+		}
+	});
+	return doneItens;
+}
+
 function saveTask(array) {
 	saveJson = JSON.stringify(array);
 	localStorage.setItem("buyData", saveJson);
 }
 
-function saveTaskDone(array) {}
+function saveTaskDone(array) {
+	saveJson = JSON.stringify(array);
+	localStorage.setItem("doneData", saveJson);
+}
 
 function createItem() {
 	const newItem = document.createElement("li");
@@ -44,6 +84,8 @@ function createTrashEvent(trash) {
 	});
 	trash.addEventListener("click", () => {
 		trash.parentElement.parentElement.parentElement.remove();
+		saveTaskDone(getDoneItens());
+		saveTask(getBuyItens());
 	});
 }
 
@@ -70,6 +112,8 @@ function createEditEvent(edit) {
 				edit.parentElement.previousElementSibling.lastElementChild.remove();
 				edit.parentElement.previousElementSibling.append(newText);
 			}
+			saveTaskDone(getDoneItens());
+			saveTask(getBuyItens());
 		} else {
 			const edited = document.createElement("input");
 			edited.classList.add("item__task");
@@ -89,11 +133,15 @@ function createCheckboxEvent(checkbox) {
 			checkbox.nextElementSibling.classList.add("item__task--done");
 			const doneList = document.querySelector(".done-list__list");
 			doneList.append(checkbox.parentElement.parentElement.parentElement);
+			saveTaskDone(getDoneItens());
+			saveTask(getBuyItens());
 		} else {
 			checkbox.setAttribute("src", "images/checkbox.svg");
 			checkbox.nextElementSibling.classList.remove("item__task--done");
 			const buyList = document.querySelector(".buy-list__list");
 			buyList.append(checkbox.parentElement.parentElement.parentElement);
+			saveTaskDone(getDoneItens());
+			saveTask(getBuyItens());
 		}
 	});
 }
@@ -107,16 +155,18 @@ function createMainInfo(textItem, done) {
 
 	const img = document.createElement("img");
 	img.classList.add("item__checkbox");
-	if (done === false) {
-		img.setAttribute("src", "images/checkbox.svg");
-	} else {
-		img.setAttribute("src", "images/checkbox-done.svg");
-	}
-	createCheckboxEvent(img);
 
 	const newText = document.createElement("p");
 	newText.classList.add("item__task");
 	newText.textContent = textItem;
+
+	if (done === false) {
+		img.setAttribute("src", "images/checkbox.svg");
+	} else {
+		img.setAttribute("src", "images/checkbox-done.svg");
+		newText.classList.add("item__task--done");
+	}
+	createCheckboxEvent(img);
 
 	const itemCustom = document.createElement("div");
 	itemCustom.classList.add("item__custom");
@@ -166,20 +216,14 @@ function createFullItem(textItem, date, done) {
 btn.addEventListener("click", () => {
 	if (input.value !== "") {
 		const day = new Date().toLocaleString("pt-BR", { weekday: "long" });
-		const date = new Date().toLocaleString("pt-BR", { DateStyle: "short" });
+		const date = new Date().toLocaleDateString("pt-BR");
 		const hour = new Date().toLocaleString("pt-BR", { timeStyle: "medium" });
 		const fullDate = `${day} (${date}) ás ${hour}`;
 		createFullItem(input.value, fullDate, false);
-
-		const textTasks = Array.from(document.querySelectorAll(".buy-list__list .item__task"));
-		const dates = Array.from(document.querySelectorAll(".buy-list__list .item__date"));
-		const buyItens = [];
-		dates.forEach((date, iDate) => {
-			buyItens.push(new ObjTask(textTasks[iDate].textContent, date.textContent, false));
-		});
-		saveTask(buyItens);
+		saveTask(getBuyItens());
 		input.value = "";
 	}
 });
 
 loadBuyTasks();
+loadDoneTasks();
