@@ -1,4 +1,5 @@
 import * as save from "./save.js";
+import verifyItem from "./verify.js";
 
 export function createCheckboxEvent(checkbox) {
 	checkbox.addEventListener("click", () => {
@@ -68,5 +69,6 @@ export function createTrashEvent(trash) {
 		trash.parentElement.parentElement.parentElement.remove();
 		save.saveTask();
 		save.saveTaskDone();
+        verifyItem();
 	});
 }

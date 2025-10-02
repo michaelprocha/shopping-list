@@ -1,5 +1,6 @@
 import load from "./models/load.js";
 import createFullItem from "./models/create.js";
+import verifyItem from "./models/verify.js";
 import * as save from "./models/save.js";
 
 const input = document.querySelector(".add-list__input");
@@ -14,14 +15,8 @@ btn.addEventListener("click", () => {
 		createFullItem(input.value, fullDate, false);
 		save.saveTask();
 		input.value = "";
+		verifyItem();
 	}
 });
-
-const hasItem = load();
-
-// if (hasItem) {
-// 	const p = document.createElement('p');
-// 	p.classList.add('');
-// 	p.textContent = 'Sua lista está vazia. Adicione itens a ela para não esquecer nada na próxima compra!';
-
-// }
+verifyItem();
+load();

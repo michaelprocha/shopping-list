@@ -126,6 +126,11 @@ body {
   flex-direction: column;
   gap: 1.125rem;
 }
+.buy-list__text {
+  color: #131730;
+  font-family: "Numans", sans-serif;
+  font-size: 1.125rem;
+}
 
 .done-list__title {
   font-family: "Krona One", sans-serif;

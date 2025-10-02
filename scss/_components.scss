@@ -62,6 +62,12 @@
         flex-direction: column;
         gap: uti.to-rem(18);
     }
+
+    &__text {
+        color: var.$border-color;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-large-size);
+    }
 }
 
 .done-list {
