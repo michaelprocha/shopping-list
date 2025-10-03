@@ -18,5 +18,5 @@ btn.addEventListener("click", () => {
 		verifyItem();
 	}
 });
-verifyItem();
 load();
+verifyItem();

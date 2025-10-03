@@ -69,6 +69,6 @@ export function createTrashEvent(trash) {
 		trash.parentElement.parentElement.parentElement.remove();
 		save.saveTask();
 		save.saveTaskDone();
-        verifyItem();
+		verifyItem();
 	});
 }

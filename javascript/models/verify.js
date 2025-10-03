@@ -9,8 +9,9 @@ export default function verifyItem() {
 		p.classList.add("buy-list__text");
 		p.textContent = "Sua lista está vazia. Adicione itens a ela para não esquecer nada na próxima compra!";
 		buyList.append(p);
-        
-		// mainList.lastElementChild.remove();
+		if (mainList.querySelector(".done-list")) {
+			mainList.querySelector(".done-list").remove();
+		}
 	} else {
 		if (document.querySelector(".buy-list__text")) {
 			document.querySelector(".buy-list__text").remove();
