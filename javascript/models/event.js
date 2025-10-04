@@ -3,7 +3,7 @@ import verifyItem from "./verify.js";
 
 export function createCheckboxEvent(checkbox) {
 	checkbox.addEventListener("click", () => {
-		if (checkbox.getAttribute("src") === "../../images/checkbox.svg") {
+		if (checkbox.getAttribute("src") === "../../images/checkbox.svg" || checkbox.getAttribute("src") === "images/checkbox.svg") {
 			checkbox.setAttribute("src", "../../images/checkbox-done.svg");
 			checkbox.nextElementSibling.classList.add("item__task--done");
 			const doneList = document.querySelector(".done-list__list");
