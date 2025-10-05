@@ -1,0 +1,22 @@
+@use 'variables' as var;
+@use 'utilits' as uti;
+
+.app{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-list{
+    background-color: var.$main-color;
+    width: 100%;
+    max-width: uti.to-rem(440);
+    padding: uti.to-rem(50) uti.to-rem(20);
+    border-radius: uti.to-rem(16);
+}
+
+.main-list{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,146 @@
+@use "utilits" as uti;
+@use "variables" as var;
+
+.add-list {
+    margin-bottom: uti.to-rem(24);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: uti.to-rem(8);
+
+    &__img {
+        margin-bottom: uti.to-rem(24);
+    }
+
+    &__input {
+        max-width: uti.to-rem(307);
+        max-height: uti.to-rem(43);
+        width: 100%;
+        height: 100%;
+        border: solid 1px var.$border-color;
+        border-radius: uti.to-rem(24);
+        padding: uti.to-rem(16) uti.to-rem(12);
+        text-align: center;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-size);
+
+        &::placeholder {
+            color: #8a8a8a;
+            font-family: var.$text-font;
+            font-size: uti.to-rem(14);
+        }
+    }
+
+    &__btn {
+        max-width: uti.to-rem(140);
+        max-height: uti.to-rem(48);
+        background-color: var.$secundary-color;
+        width: 100%;
+        height: 100%;
+        padding: uti.to-rem(12) uti.to-rem(16);
+        border-radius: uti.to-rem(24);
+        color: var.$main-color;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-large-size);
+        margin: 0 0 uti.to-rem(24) 0;
+        cursor: pointer;
+    }
+}
+
+.buy-list {
+    &__title {
+        font-family: var.$title-font;
+        font-size: uti.to-rem(var.$title-size);
+        color: var.$secundary-color;
+        border-bottom: dotted 3px var.$secundary-color;
+        padding: 0 0 uti.to-rem(8) 0;
+        margin: 0 0 uti.to-rem(24) 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: uti.to-rem(18);
+    }
+
+    &__text {
+        color: var.$border-color;
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-large-size);
+    }
+}
+
+.done-list {
+    &__title {
+        font-family: var.$title-font;
+        font-size: uti.to-rem(var.$title-size);
+        color: var.$secundary-color;
+        border-bottom: dotted 3px var.$secundary-color;
+        padding: 0 0 uti.to-rem(8) 0;
+        margin: uti.to-rem(40) 0 uti.to-rem(24) 0;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: uti.to-rem(18);
+    }
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: uti.to-rem(2);
+
+    &__main-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__data {
+        display: flex;
+        align-items: center;
+        gap: uti.to-rem(10);
+    }
+
+    &__checkbox {
+        cursor: pointer;
+    }
+
+    &__task {
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$text-size);
+        color: var.$border-color;
+
+        &--done {
+            text-decoration: line-through;
+        }
+    }
+
+    &__custom {
+        display: flex;
+        align-items: center;
+        gap: uti.to-rem(10);
+    }
+
+    &__edit {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    &__trash {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    &__date {
+        font-family: var.$text-font;
+        font-size: uti.to-rem(var.$date-size);
+        color: var.$border-color;
+    }
+}
+
+.footer {
+    margin: uti.to-rem(19) 0 uti.to-rem(40) 0;
+}
