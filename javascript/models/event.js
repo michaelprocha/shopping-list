@@ -4,14 +4,14 @@ import verifyItem from "./verify.js";
 export function createCheckboxEvent(checkbox) {
 	checkbox.addEventListener("click", () => {
 		if (checkbox.getAttribute("src") === "../../images/checkbox.svg" || checkbox.getAttribute("src") === "images/checkbox.svg") {
-			checkbox.setAttribute("src", "../../images/checkbox-done.svg");
+			checkbox.setAttribute("src", "images/checkbox-done.svg");
 			checkbox.nextElementSibling.classList.add("item__task--done");
 			const doneList = document.querySelector(".done-list__list");
 			doneList.append(checkbox.parentElement.parentElement.parentElement);
 			save.saveTask();
 			save.saveTaskDone();
 		} else {
-			checkbox.setAttribute("src", "../../images/checkbox.svg");
+			checkbox.setAttribute("src", "images/checkbox.svg");
 			checkbox.nextElementSibling.classList.remove("item__task--done");
 			const buyList = document.querySelector(".buy-list__list");
 			buyList.append(checkbox.parentElement.parentElement.parentElement);
@@ -23,14 +23,14 @@ export function createCheckboxEvent(checkbox) {
 
 export function createEditEvent(edit) {
 	edit.addEventListener("mouseenter", () => {
-		edit.setAttribute("src", "../../images/edit-red.svg");
+		edit.setAttribute("src", "images/edit-red.svg");
 	});
 	edit.addEventListener("mouseleave", () => {
-		edit.setAttribute("src", "../../images/edit-black.svg");
+		edit.setAttribute("src", "images/edit-black.svg");
 	});
 	edit.addEventListener("click", () => {
 		if (edit.parentElement.previousElementSibling.lastElementChild.getAttribute("type")) {
-			if (edit.parentElement.previousElementSibling.firstElementChild.getAttribute("src") === "../../images/checkbox-done.svg") {
+			if (edit.parentElement.previousElementSibling.firstElementChild.getAttribute("src") === "../../images/checkbox-done.svg" || edit.parentElement.previousElementSibling.firstElementChild.getAttribute("src") === "images/checkbox-done.svg") {
 				const newText = document.createElement("p");
 				newText.classList.add("item__task");
 				newText.classList.add("item__task--done");
@@ -60,10 +60,10 @@ export function createEditEvent(edit) {
 
 export function createTrashEvent(trash) {
 	trash.addEventListener("mouseenter", () => {
-		trash.setAttribute("src", "../../images/trash-red.svg");
+		trash.setAttribute("src", "images/trash-red.svg");
 	});
 	trash.addEventListener("mouseleave", () => {
-		trash.setAttribute("src", "../../images/trash-black.svg");
+		trash.setAttribute("src", "images/trash-black.svg");
 	});
 	trash.addEventListener("click", () => {
 		trash.parentElement.parentElement.parentElement.remove();
